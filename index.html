@@ -12,35 +12,53 @@
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box; /* برای محاسبه صحیح padding */
+  }
+
+  /* یک محفظه برای قرار دادن عکس و پلیر در مرکز */
+  .container {
     display: flex;
+    flex-direction: column; /* چیدن آیتم‌ها زیر هم */
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    overflow: hidden;
+    width: 100%;
   }
-  img {
+
+  .car-image {
     max-width: 90%;
-    max-height: 90%;
+    max-height: 75vh; /* محدود کردن ارتفاع عکس تا جا برای پلیر بماند */
     border-radius: 15px;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
     object-fit: contain;
+    margin-bottom: 25px; /* ایجاد فاصله بین عکس و دکمه پخش */
   }
+
+  /* استایل برای پلیر موزیک */
   audio {
-      display: none; /* مخفی کردن پلیر */
+    width: 85%;
+    max-width: 400px; /* حداکثر عرض برای پلیر */
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
   }
 </style>
 </head>
 <body>
 
-  <!-- فرض می‌کنیم نام عکس ماشین car.jpg است -->
-  <img src="car.jpg" alt="CLS 63">
+  <div class="container">
+    
+    <!-- مطمئن شوید نام عکس ماشین درست است -->
+    <img src="car.jpg" alt="CLS 63" class="car-image">
 
-  <!-- نام فایل صوتی شما -->
-  <audio controls autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-    مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
-  </audio>
+    <!-- تگ موزیک با کنترلر و بدون پخش خودکار -->
+    <audio controls loop>
+      <source src="music.mp3" type="audio/mpeg">
+      مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+    </audio>
+
+  </div>
 
 </body>
 </html>
